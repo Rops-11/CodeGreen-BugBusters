@@ -9,6 +9,7 @@ export default {
         inputfield: "#6B6E70",
         hoverbutton: "#222629",
         secondgrey: "#474B4F",
+        colorhover: "#33471a"
       },
       backgroundImage: {
         "login-bg": "url('/assets/login.jpg')",
