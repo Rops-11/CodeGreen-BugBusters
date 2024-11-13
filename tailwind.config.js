@@ -13,7 +13,7 @@ export default {
       backgroundImage: {
         "login-bg": "url('/assets/login.jpg')",
         "signup-bg": "url('/assets/signup.png')",
-        "homepage-bg": "url('/assets/homepage.png')",
+        "homepage-bg": "url('/assets/homepage.jpg')",
         "about-bg": "url('/assets/about.png')",
       },
       fontFamily: {
