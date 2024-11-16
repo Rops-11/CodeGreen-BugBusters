@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+
+
+@layer base {
+    @font-face {
+      font-family: 'Syke';
+      src: url('/assets/fonts/Syke-Regular-BF63ec3a27c5479.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'Syke-Light';
+      src: url('/assets/fonts/Syke-Light-BF63ec3a2699e67.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'Syke-Bold';
+      src: url('/assets/fonts/Syke-Bold-BF63ec3a27482f0.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'Syke-Medium';
+      src: url('/assets/fonts/Syke-Medium-BF63ec3a272249b.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'Syke-Thin';
+      src: url('/assets/fonts/Syke-Thin-BF63ec3a26985f9.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'Syke-Black';
+      src: url('/assets/fonts/Syke-Black-BF63ec3a264d964.otf') format('opentype');
+    }
+  }
+  
+@tailwind utilities;
