@@ -3,6 +3,7 @@ import AdminHeader from "../components/AdminHeader"
 import React, { useState } from 'react';
 
 const AddViolation = () => { 
+
     const navigate = useNavigate()
 
     const [currentStep, setCurrentStep] = useState(1);
