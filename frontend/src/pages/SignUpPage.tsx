@@ -118,6 +118,7 @@ const SignUp = () => {
                 onChange={handleFormChange}
               />
             </div>
+            
             <div>
               <input
                 type="password"
