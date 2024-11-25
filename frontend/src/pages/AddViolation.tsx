@@ -1,177 +1,216 @@
-import { useNavigate } from "react-router-dom"
-import AdminHeader from "../components/AdminHeader"
-import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import AdminHeader from "../components/AdminHeader";
+import React, { useState } from "react";
 
-const AddViolation = () => { 
-    const navigate = useNavigate()
+const AddViolation = () => {
+  const navigate = useNavigate();
 
-    const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(1);
 
-    const handleCancelButton = () => { 
-        navigate('/encode')
-    };
+  const handleCancelButton = () => {
+    navigate("/encode");
+  };
 
-    const handleNextClick = () => {
-        setCurrentStep(currentStep + 1);
-    };
+  const handleNextClick = () => {
+    setCurrentStep(currentStep + 1);
+  };
 
-    const handleBackClick = () => {
-        setCurrentStep(currentStep - 1);
+  const handleBackClick = () => {
+    setCurrentStep(currentStep - 1);
+  };
+  return (
+    <div className="flex flex-col items-center bg-adminlanding-bg bg-cover bg-no-repeat sm:bg-top md:bg-right lg:bg-left h-screen">
+      <div>
+        <AdminHeader />
+      </div>
 
-    };
-    return( 
-        <div className="flex flex-col items-center bg-login-bg bg-cover bg-no-repeat sm:bg-top md:bg-right lg:bg-left h-screen">
-            <div className="w-full max-w-3xl mb-8 mt-5">
-            <AdminHeader />
+      {currentStep === 1 && (
+        <div>
+          <div className="text-left font-syke-light text-white justify-center items-center">
+            <div className="text-textgreen">
+              <h1 className="text-4xl font-syke-bold">Adding a Violation</h1>
+              <div>Find the driver by searching.</div>
             </div>
-        
-        { currentStep === 1 && (
 
-            <div>
-                <div className="text-textgreen">
-                    <h1 className="text-2xl font-bold">Step 1: Find Driver</h1>
-                    <p>Enter the driver information here...</p>
-                </div>
-
-                <div className="mt-12">
-                    <div className="w-full mt-6">
-                    <label 
-                        className="block text-white font-syke-regular mb-1">
-                        Last Name : 
-                    </label>
+            <div className="w-[30rem] mt-[1rem]">
+              <form className="space-y-5">
+                <div className="flex space-x-4">
+                  <div className="flex-1">
+                    <h1 className="text-white font-syke-light text-xl">
+                      Last Name
+                    </h1>
                     <input
-                        type="text"
-                        className="text-center bg-secondgrey w-full px-4 py-2 focus:outline-none focus:ring-1 focus:ring-textgreen text-white rounded-sm"
-                        required
+                      type="text"
+                      className="bg-secondgrey border-b	 font-syke-regular text-[1.2rem] w-full mt-1 px-4 py-2 border h-10 border-none focus:outline-none focus:shadow-inner focus:ring-1 focus:ring-textgreen text-white placeholder-white rounded-sm"
+                      name="last_name"
+                      placeholder="Enter"
+                      required
                     />
-                    </div>
-
-                    <div className="w-full mt-6">
-                    <label 
-                        className="block text-white font-syke-regular mb-1">
-                        First Name : 
-                    </label>
-                    <input
-                        type="text"
-                        className="text-center bg-secondgrey w-full px-4 py-2 focus:outline-none focus:ring-1 focus:ring-textgreen text-white rounded-sm"
-                        required
-                    />
-                    </div>
-
-                    <div className="w-full mt-6">
-                    <label 
-                        className="block text-white font-syke-regular mb-1">
-                        License Number
-                         : 
-                    </label>
-                    <input
-                        type="text"
-                        className="text-center bg-secondgrey w-full px-4 py-2 focus:outline-none focus:ring-1 focus:ring-textgreen text-white rounded-sm"
-                        required
-                    />
-                    </div>
-
-                </div>
-            </div>
-        )}
-
-        { currentStep === 2 && (
-            <div>
-                <div className="text-textgreen">
-                    <h1 className="text-2xl font-bold">Step 2: Add Violation</h1>
-                    <p>Add the driver's violation here...</p>
-                </div>
-
-                <div className="text-white mt-4 space-y-5">
-                    <div className="flex space-x-20">
-                        <h1>Last Name : </h1>
-                        <h1>First Name : </h1>
-                        <h1>Middle Name : </h1>
-                    </div>
-
-                    <div className="flex space-x-20">
-                        <h1>Age : </h1>
-                        <h1>Sex : </h1>
-                    </div>
-                    
-                    <h1>Email : </h1>
-
-                    <div className="flex space-x-20">
-                        <h1>License Number : </h1>
-                        <h1>License Expiration Date : </h1>
-                    </div>
-        
-                      <h1>Driver Type : </h1>
-
                   </div>
+                </div>
 
-                  <div className="flex justify-center mt-4">
-                    <button 
-                        type="submit"
-                        className="w-32 bg-buttongreen text-white py-2 hover:bg-[#33471a] font-syke-regular transition-colors rounded-sm"
-                        >
-                        Add Violation 
-                    </button>
+                <div className="flex space-x-4">
+                  <div className="flex-1">
+                    <h1 className="text-white font-syke-light text-xl">
+                      First Name
+                    </h1>
+                    <input
+                      type="text"
+                      className="bg-secondgrey border-b	 font-syke-regular text-[1.2rem] w-full mt-1 px-4 py-2 border h-10 border-none focus:outline-none focus:shadow-inner focus:ring-1 focus:ring-textgreen text-white placeholder-white rounded-sm"
+                      name="first_name"
+                      placeholder="Enter"
+                      required
+                    />
                   </div>
+                </div>
+
+                <div className="flex space-x-4">
+                  <div className="flex-1">
+                    <h1 className="text-white font-syke-light text-xl">
+                      License Number
+                    </h1>
+                    <input
+                      type="text"
+                      className="bg-secondgrey font-syke-regular text-[1.2rem] w-full mt-1 px-4 py-2 border h-10 border-none focus:outline-none focus:shadow-inner focus:ring-1 focus:ring-textgreen text-white placeholder-white rounded-sm"
+                      name="license_number"
+                      placeholder="Enter"
+                    />
+                  </div>
+                </div>
+              </form>
             </div>
-            
-        )}
-          
-          { currentStep === 1 && (
-               
-               <div className="text-center flex justify-center gap-40 p-10">
-                <div>
-                    <button
-                        type="button"
-                        className="w-32 bg-buttongreen text-white py-2 hover:bg-[#33471a] font-syke-regular transition-colors rounded-sm"
-                        onClick={ handleCancelButton }
-                        >
-                        Cancel
-                        </button>
-                    </div>
-
-                <div>
-                    <button
-                        type="button"
-                        className="w-32 bg-buttongreen text-white py-2 hover:bg-[#33471a] font-syke-regular transition-colors rounded-sm"
-                        onClick={ handleNextClick }
-                        >
-                        Next
-                        </button>
-                        
-                    </div>
-                </div>
-
-              
-             )}
-
-             {currentStep === 2 && (
-
-                <div className="flex justify-center gap-40 p-10">
-                <div>
-                    <button
-                        type="button"
-                        className="w-32 bg-buttongreen text-white py-2 hover:bg-[#33471a] font-syke-regular transition-colors rounded-sm"
-                        onClick={ handleBackClick }
-                        >
-                        Back
-                        </button>
-                    </div>
-
-                <div>
-                    <button
-                        type="button"
-                        className="w-32 bg-buttongreen text-white py-2 hover:bg-[#33471a] font-syke-regular transition-colors rounded-sm"
-                        onClick={ handleNextClick }
-                        >
-                        Confirm
-                        </button>
-                    </div>
-                </div>
-             )}
-
+          </div>
         </div>
-    )
-}
+      )}
+
+      {currentStep === 2 && (
+        <div>
+        <div className="text-left font-syke-light text-white justify-center items-center">
+          <div className="text-textgreen">
+            <h1 className="text-4xl font-syke-bold">Adding a Violation</h1>
+            <div>Driver found.</div>
+          </div>
+
+          <div className="bg- w-[40rem] h-[auto] mt-4">
+            <form className="space-y-[2rem]">
+              <div className="flex space-x-4">
+                <div className="flex-[1]">
+                  <h1 className="text-white font-syke-light text-xl">
+                    Last Name
+                  </h1>
+                  <h1 className="text-textgreen font-syke-medium text-3xl">
+                    Alcorin
+                  </h1>
+                </div>
+
+                <div className="flex-1">
+                  <h1 className="text-white font-syke-light text-xl">
+                    First Name
+                  </h1>
+                  <h1 className="text-textgreen font-syke-medium text-3xl">
+                    Shawn Patrick
+                  </h1>
+                </div>
+                <div className="flex-2">
+                  <h1 className="text-white font-syke-light text-xl">Sex</h1>
+                  <h1 className="text-textgreen font-syke-medium text-3xl">
+                    Female
+                  </h1>
+                </div>
+              </div>
+
+              <div className="flex space-x-4">
+                <div className="flex-1">
+                  <h1 className="text-white font-syke-light text-xl">
+                    Date of Birth
+                  </h1>
+                  <h1 className="text-textgreen font-syke-medium text-3xl">
+                    02/29/2004
+                  </h1>
+                </div>
+                <div className="flex-1">
+                  <h1 className="text-white font-syke-light text-xl">
+                    Driver Type
+                  </h1>
+                  <h1 className="text-textgreen font-syke-medium text-3xl">
+                    Student
+                  </h1>
+                </div>
+              </div>
+
+              <div className="flex space-x-4">
+                <div className="flex-1">
+                  <h1 className="text-white font-syke-light text-xl">
+                    License Number:
+                  </h1>
+                  <h1 className="text-textgreen font-syke-medium text-3xl">
+                    NO3-12-123456
+                  </h1>
+                </div>
+                <div className="flex-1">
+                  <h1 className="text-white font-syke-light text-xl">
+                    License Expiration Date
+                  </h1>
+                  <h1 className="text-textgreen font-syke-medium text-3xl">
+                    03/10/2026
+                  </h1>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      )}
+
+      {currentStep === 1 && (
+        <div className="text-center flex justify-center gap-40 p-10">
+          <div>
+            <button
+              type="button"
+              className="w-32 bg-buttongreen font-syke-medium text-white py-2 hover:bg-[#33471a] font-syke-regular transition-colors rounded-sm"
+              onClick={handleCancelButton}
+            >
+              Cancel
+            </button>
+          </div>
+
+          <div>
+            <button
+              type="button"
+              className="w-32 bg-buttongreen font-syke-medium text-white py-2 hover:bg-[#33471a] font-syke-regular transition-colors rounded-sm"
+              onClick={handleNextClick}
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      )}
+
+      {currentStep === 2 && (
+        <div className="flex justify-center gap-40 p-10">
+          <div>
+            <button
+              type="button"
+              className="w-32 bg-buttongreen font-syke-medium text-white py-2 hover:bg-[#33471a] font-syke-regular transition-colors rounded-sm"
+              onClick={handleBackClick}
+            >
+              Back
+            </button>
+          </div>
+
+          <div>
+            <button
+              type="button"
+              className="w-32 bg-buttongreen font-syke-medium text-white py-2 hover:bg-[#33471a] font-syke-regular transition-colors rounded-sm"
+              onClick={handleNextClick}
+            >
+              Add Violation
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default AddViolation;

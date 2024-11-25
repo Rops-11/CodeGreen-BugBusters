@@ -18,7 +18,8 @@ const AdminHeader = () => {
     // Replace with BACKEND APIs
     // try {
     //   const { error } = await supabase.auth.signOut();
-    //   error ? alert(error) : navigate("/login");
+    //   if (error) alert(error);
+    //   else navigate("/login");
     // } catch (error) {
     //   alert(error);
     // }
@@ -35,68 +36,73 @@ const AdminHeader = () => {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [dropdownRef]);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
-    <header className="flex space-x-40items-center justify-center w-full px-20 py-4">
-      <div className="flex items-center w-full max-w-5xl justify-between">
-        <div className="flex items-center">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black py-4 px-8 shadow-md">
+      <div className="flex mt-3 items-center font-syke-regular w-full max-w-[60rem] justify-between">
+        {/* Logo Section */}
+        <div className="flex items-center w-[12rem] ml-[-70px] mr-[150px]">
           <button
-            className="flex items-center gap-4 relative group overflow-hidden rounded-2x pr-20 py-2 text-white font-medium text-lg"
-            onClick={handleHomePage}>
+            onClick={handleHomePage}
+            className="flex text-left items-center gap-4 group overflow-hidden rounded-md pr-20 py-2 text-white font-medium text-lg"
+          >
             <img
               src="../assets/5.png"
               alt="Logo"
-              className="w-10 h-5 object-contain md:w-12 md:h-12 transition-transform duration-300 hover:scale-105"
+              className="w-10 h-5 object-contain md:w-[4rem] md:h-[4rem] transition-transform duration-300 hover:scale-105"
             />
-            <h1 className="text-lg text-left font-syke-medium md:text-xl">
-              CodeGreen Gateway
-            </h1>
+            <h1 className="text-lg md:text-xl font-semibold transition-colors hover:text-buttongreen">CodeGreen Gateway</h1>
           </button>
         </div>
 
-        {/* Right Section: Navigation */}
-        <nav className="flex space-x-12 text-white font-syke-medium font-medium text-lg">
+        {/* Navigation Section */}
+        <nav className="flex space-x-20 text-white font-medium text-lg">
           <Link
             to="/encode"
-            className="hover:text-textgreen transition-colors">
+            className="hover:text-textgreen transition-colors"
+          >
             Encode
           </Link>
-
           <Link
             to="/driverslist"
-            className="hover:text-textgreen font-syke-medium transition-colors">
+            className="hover:text-textgreen transition-colors"
+          >
             Drivers
           </Link>
-
           <Link
             to="/violatorslist"
-            className="hover:text-textgreen font-syke-medium transition-colors">
+            className="hover:text-textgreen transition-colors"
+          >
             Violators
           </Link>
 
-          <div
-            className="relative"
-            ref={dropdownRef}>
+          {/* Dropdown Menu */}
+          <div className="relative" ref={dropdownRef}>
             <button
               onClick={toggleDropdown}
-              className="text-white hover:text-textgreen transition-colors">
+              className="hover:text-buttongreen transition-colors"
+            >
               Account
             </button>
-
             {isDropdownOpen && (
               <div className="absolute right-0 mt-4 w-48 bg-hoverbutton text-white rounded-md shadow-lg">
-                <span className="block font-syke-medium text-sm px-4 py-2 hover:bg-buttongreen rounded-md cursor-pointer">
+                <span
+                  className="block font-syke-medium rounded-t-lg text-sm px-4 py-2 hover:bg-buttongreen cursor-pointer"
+                >
                   Profile
                 </span>
-
                 <span
                   onClick={handleSignOut}
-                  className="block font-syke-medium text-sm px-4 py-2 hover:bg-buttongreen rounded-md cursor-pointer">
+                  className="block font-syke-medium text-sm px-4 py-2 hover:bg-buttongreen cursor-pointer"
+                >
+                  Reset Password
+                </span>
+                <span
+                  onClick={handleSignOut}
+                  className="block font-syke-medium text-sm rounded-b-lg px-4 py-2 hover:bg-buttongreen cursor-pointer"
+                >
                   Log Out
                 </span>
               </div>

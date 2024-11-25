@@ -16,9 +16,9 @@ const Forgot = () => {
   };
 
   return (
-    <div className="flex justify-center items-center bg-hoverbutton bg-no-repeat sm:bg-top md:bg-right lg:bg-left h-screen">
-      <div className="bg-hoverbutton p-5 rounded-sm w-">
-        <div className="flex flex-col justify-center items-start font-syke-medium text-textgreen text-4xl gap-2">
+    <div className="flex justify-center bg-hoverbutton bg-no-repeat h-screen">
+      <div className="bg-hoverbutton mt-[10rem] p-5 rounded-sm">
+        <div className="flex flex-col font-syke-medium text-textgreen text-4xl gap-2">
           <h1>Reset Password</h1>
         </div>
         <h5 className="font-skye-regular text-white mt-2">

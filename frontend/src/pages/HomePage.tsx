@@ -9,26 +9,23 @@ const HomePage = () => {
     navigate("/register-driver");
   };
   return (
-    <div className="flex flex-col items-center bg-homepage-bg bg-cover bg-no-repeat sm:bg-top md:bg-right lg:bg-left h-screen">
-      <div className="w-full max-w-3xl mb-8 mt-5">
+    <div className="flex flex-col items-center bg-homepage-bg bg-cover bg-no-repeat h-screen">
+      <div>
         <Header />
       </div>
 
-      <div className="text-center text-white justify-center items-center">
-        <h1 className="text-5xl font-syke-medium text-textgreen mb-7">
-          Welcome, Name Name
-        </h1>
-        <p className="text-center font-syke-regular">
-          <b>Logged-in as: </b> nonoycute@hotmail.com
-        </p>
+      <div className="flex space-x-2 p-5">
+        <h1 className="text-3xl text-textgreen font-syke-bold">Welcome,</h1>
+        <h1 className="text-3xl text-white font-syke-bold">Shawn Patrick</h1>
       </div>
 
-      <div className="justify-center text-center text-white mt-5 font-syke-regular space-y-7">
-        <h1>Please register to continue!</h1>
-
-        <button
+      <div className="justify-center text-center text-white mt-5 font-syke p-5 space-y-7">
+        <h1>Oops! It looks like you have not register yet as a driver.</h1>
+      </div>
+      <div>
+      <button
           type="submit"
-          className="p-2 rounded-sm w-5/6 font-syke-regular bg-buttongreen hover:bg-colorhover transition-colors duration-300"
+          className="p-2 rounded-sm w-[10rem] font-syke-medium text-white bg-buttongreen hover:bg-colorhover transition-colors duration-300"
           onClick={handleRegisterButton}>
           Register Now!
         </button>
