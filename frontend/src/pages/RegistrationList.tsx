@@ -1,26 +1,29 @@
 import { useState } from "react";
-import useGetRegistration from "../hooks/useGetRegistration";
+import { toast } from "react-toastify";
+import useGetRegistration from "../hooks/registration-hooks/useGetRegistration";
 import AdminHeader from "../components/AdminHeader";
 import RegistrationListCard from "../components/RegistrationListCard";
 import { Registration } from "../types/datatypes";
+import { useApproveRegistration } from "../hooks/registration-hooks/useApproveRegistration";
 
 const RegistrationList = () => {
   const { registration: registrations } = useGetRegistration();
   const [selectedRegistration, setSelectedRegistration] =
     useState<Registration>();
+  const { approveRegistration, loading } = useApproveRegistration();
 
   const handleRegisterClick = (registration: Registration) => {
-    setSelectedRegistration(registration)
+    setSelectedRegistration(registration);
   };
 
-  // const handleAccept = () => {
-  //   // Implement accept logic here
-  //   console.log("Accepting registration:", selectedRegistration);
-  // };
+  const handleAccept = async () => {
+    if (!selectedRegistration?.license_number) {
+      toast.error("License number is missing for the selected registration.");
+      return;
+    }
 
-  // const handleDecline = (registrations: Registration) => {
-  //   setSelectedRegistration(registrations);
-  // };
+    await approveRegistration(selectedRegistration.license_number);
+  };
 
   if (!registrations || registrations.length === 0) {
     return <div>No registrations found.</div>;
@@ -112,15 +115,13 @@ const RegistrationList = () => {
                       </div>
                       <div>
                         <button
-                          // onClick={handleAccept}
+                          onClick={handleAccept}
+                          disabled={loading}
                           className="p-2 px-4 m-2 bg-hoverbutton hover:bg-buttongreen transition-colors rounded-sm text-white font-syke-bold"
                         >
-                          Accept
+                          {loading ? "Processing..." : "Accept"}
                         </button>
-                        <button
-                          // onClick={handleDecline}
-                          className="p-2 px-5  m-2 bg-hoverbutton hover:bg-red-900 transition-colors rounded-sm text-white font-syke-bold"
-                        >
+                        <button className="p-2 px-5  m-2 bg-hoverbutton hover:bg-red-900 transition-colors rounded-sm text-white font-syke-bold">
                           Reject
                         </button>
                       </div>
@@ -133,12 +134,14 @@ const RegistrationList = () => {
                 Select a registration to see details.
               </div>
             )}
-          </div>  
+          </div>
           <div className="w-[50%] h-full p-6 rounded-md">
             <div className="text-left rounded-xl bg-clip-padding">
               <div className="text-left font-syke-light text-white">
                 <div className="text-textgreen py-3">
-                  <h1 className="text-4xl font-syke-bold">Registration's List</h1>
+                  <h1 className="text-4xl font-syke-bold">
+                    Registration's List
+                  </h1>
                   <div>List of Users that Registered.</div>
                 </div>
               </div>

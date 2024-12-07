@@ -39,15 +39,21 @@ const AdminLandingPage = () => {
       <p>Let's create a safer and more organized school environment together. </p>
       </div>
 
-      <div className="grid-cols-1 font-syke-medium text-3xl mt-10">
+      <div className="grid-cols-2 grid gap-x-5 font-syke-medium text-3xl mt-10">
         <button
           className="transition-transform w-[21rem] h-[5rem] duration-300 hover:scale-105 text-white px-5 py-4 rounded-lg bg-buttongreen active:bg-colorhover font-syke-medium"
           onClick={handleEncodeButton}
         >
           Encode
         </button>
-        </div>
-      <div className="grid grid-cols-3 font-syke-medium text-3xl gap-x-5 gap-y-5 mt-6">
+        <button
+          className="transition-transform w-[21rem] h-[5rem] duration-300 hover:scale-105 text-white px-5 py-4 rounded-lg bg-buttongreen active:bg-colorhover font-syke-medium"
+          // onClick={handleEncodeButton}
+        >
+          Send Notification
+        </button>
+      </div>
+        <div className="grid grid-cols-3 font-syke-medium text-3xl gap-x-5 gap-y-5 mt-6">
     
         <button
           className="transition-transform duration-300 hover:scale-105 text-white px-5 py-4 rounded-md bg-buttongreen active:bg-colorhover font-syke-medium"

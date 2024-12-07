@@ -31,7 +31,7 @@ const ViewProfile = () => {
       <div className="flex">
         <aside className="p-4 grid items-center">
           <nav>
-            <ul className="space-y-[2rem]">
+            <div className="space-y-[2rem]">
               <button
                 onClick={() => SetActiveSection("profile")}
                 className={`block cursor-pointer transition-colors text-2xl font-syke-medium ${
@@ -61,7 +61,7 @@ const ViewProfile = () => {
                 }`}>
                 Violations
               </button>
-            </ul>
+            </div>
           </nav>
         </aside>
         {activeSection === "profile" && <Profile driver={driver} />}
