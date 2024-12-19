@@ -3,14 +3,14 @@ import { DriverWithVandC } from "../../types/datatypes";
 import useEditDriver from "../../hooks/driver-hooks/useEditDriver";
 
 const Profile = ({ driver }: { driver: DriverWithVandC }) => {
-  const [isEditing, setIsEditing] = useState(false); // Track edit mode
+  const [isEditing, setIsEditing] = useState(false); 
   const [formData, setFormData] = useState<DriverWithVandC>(driver);
 
   const { editDriver } = useEditDriver();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value }); // Update form data
+    setFormData({ ...formData, [name]: value }); 
   };
 
   const handleEditToggle = async () => {
@@ -215,7 +215,7 @@ const Profile = ({ driver }: { driver: DriverWithVandC }) => {
               </div>
             </div>
           </form>
-          {/* Button inside backdrop */}
+          
           <div className="flex justify-end mt-4 lg:text-lg md:text-md sm:text-sm text-xs">
             {isEditing ? (
               <button

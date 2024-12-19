@@ -47,12 +47,3 @@ const useAddViolation = () => {
 };
 
 export default useAddViolation;
-
-// export interface Violation {
-//   id?: string;
-//   driver_id?: string;
-//   violation_type?: string;
-//   violation_date?: string;
-//   description?: string;
-//   paid_status?: boolean;
-// }

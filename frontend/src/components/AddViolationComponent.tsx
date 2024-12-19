@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Violation } from "../types/datatypes";
 import useAddViolation from "../hooks/violation-hooks/useAddViolation";
+import { toast } from "react-toastify";
 
 const AddViolationComponent = ({
   driverId,
@@ -17,12 +18,9 @@ const AddViolationComponent = ({
     violation_type: "",
     violation_date: date.slice(0, 10),
     description: "",
-    // place the necessary inputs needed
   });
 
   const [currentStep, setCurrentStep] = useState(1);
-
-  // console.log(formData); // REMOVE THIS WHEN ALL IS DONE
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -30,7 +28,6 @@ const AddViolationComponent = ({
   };
 
   const handleSubmit = async () => {
-    // Place
     await postViolation(formData);
     setViolationModalActive(false);
   };
@@ -39,7 +36,13 @@ const AddViolationComponent = ({
     setViolationModalActive(false);
   };
 
-  const handleNextClick = () => {
+  const handleNextClick = async () => {
+    const { violation_type, violation_date, description } = formData;
+
+    if (!violation_type || !violation_date || !description) {
+      toast.error("Missing input fields.");
+      return;
+    }
     setCurrentStep(currentStep + 1);
   };
 
@@ -47,16 +50,15 @@ const AddViolationComponent = ({
     setCurrentStep(currentStep - 1);
   };
 
-  // EDIT THIS TO MAKE IT FOR VIOLATION
   return (
-    <div className="absolute flex flex-col m-auto w-1/2 left-0 right-0 top-0 bottom-0 items-center justify-center h-1/2 px-6 py-5 bg-gray-600 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10">
-      <h1 className="text-4xl font-syke-bold text-textgreen">
-        EDIT THIS FOR ADDING VIOLATION
+    <div className="absolute flex flex-col m-auto w-full left-0 right-0 top-0 bottom-0 items-center justify-center h-full px-6 py-5 bg-secondgrey rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10">
+      <h1 className="text-3xl font-syke-bold text-textgreen">
+        Adding a Violation
       </h1>
       {currentStep === 1 && (
         <>
-          <p className="text-textgreen mb-6">Enter violation details.</p>
-          <div className="flex flex-col space-y-3 w-full">
+          <p className="text-textgreen font-syke-light text-lg">Enter violation details.</p>
+          <div className="flex flex-col space-y-3 p-3 w-full max-w-lg mx-auto">
 
             <div className="flex space-x-4 w-full">
               <div className="flex flex-col w-1/2">
@@ -108,8 +110,8 @@ const AddViolationComponent = ({
 {currentStep === 2 && (
   <>
     <p className="text-textgreen mb-6">Confirm violation details below.</p>
-    <div className="flex flex-col space-y-4 w-full">
-      {/* Violation Type and Violation Date */}
+    <div className="flex flex-col items-center space-y-6 w-full max-w-lg mx-auto">
+      
       <div className="flex space-x-4 w-full">
         {/* Violation Type */}
         <div className="flex flex-col w-1/2">
@@ -117,7 +119,7 @@ const AddViolationComponent = ({
             Violation Type
           </h1>
           <h1 className="text-textgreen font-syke-medium text-2xl">
-            {formData.violation_type || "Not Provided"}
+            {formData.violation_type}
           </h1>
         </div>
 
@@ -138,7 +140,7 @@ const AddViolationComponent = ({
           Description
         </h1>
         <h1 className="text-textgreen font-syke-medium text-2xl">
-          {formData.description || "Not Provided"}
+          {formData.description}
         </h1>
       </div>
     </div>
@@ -187,12 +189,3 @@ const AddViolationComponent = ({
 };
 
 export default AddViolationComponent;
-
-// export interface Violation {
-//   id?: string;
-//   driver_id?: string;
-//   violation_type?: string;
-//   violation_date?: string;
-//   description?: string;
-//   paid_status?: boolean;
-// }

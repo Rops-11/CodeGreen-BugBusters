@@ -4,35 +4,6 @@ import { Violation } from "../types/datatypes";
 
 const router = express();
 
-// router.post("/check-license", async (req: Request, res: Response) => {
-//   try {
-//     const { license_number } = req.body;
-
-//     const { rows: drivers } = await pool.query(
-//       `SELECT id
-//           FROM drivers
-//           WHERE license_number = $1`,
-//       [license_number]
-//     );
-
-//     const driverFound = drivers[0];
-//     console.log(drivers);
-
-//     if (!driverFound) {
-//       res.status(401).json({
-//         title: "License Number Not Found",
-//         message: "Driver with this license number does not exist.",
-//       });
-//       return;
-//     }
-
-//     res.status(200).json(driverFound);
-//   } catch (error) {
-//     console.log(error);
-//     res.sendStatus(500);
-//   }
-// });
-
 router.post("/add", async (req: Request, res: Response) => {
   try {
     const {
